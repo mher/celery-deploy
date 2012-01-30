@@ -15,11 +15,11 @@ target hosts. `celerydeploy` will try to find `CELERY_DEPLOY_PATH`
 variable in Celery configuration file. Target hosts can be provided
 with `CELERY_DEPLOY_HOSTS` variable or using --hosts command line option.
 
-Setup Celery on localhost and example.com
+Setup Celery on localhost and example.com: ::
 
     $ celerydeploy --hosts example.com,localhost worker.setup
 
-Start, stop or restart workers
+Start, stop or restart workers: ::
 
     $ celerydeploy worker.start
 
@@ -27,11 +27,11 @@ Start, stop or restart workers
 
     $ celerydeploy worker.restart
 
-Update task modules and restart workers
+Update task modules and restart workers: ::
 
     $ celerydeploy worker.deploy worker.restart
 
-Get a list of possible commands
+Get a list of possible commands: ::
 
     $ celerydeploy --list
 
