@@ -9,6 +9,7 @@ setup(
     name='celerydeploy',
     version=celerydeploy.__version__,
     description='Celery deployment tool',
+    long_description=open('README.rst').read(),
     author='Mher Movsisyan',
     url='https://github.com/mher/celery-deploy',
     packages=find_packages(),
