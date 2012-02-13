@@ -1,13 +1,27 @@
 #!/usr/bin/env python
-
-import celerydeploy
+import os
+import re
 
 from setuptools import setup, find_packages
 
 
+version = re.compile(r'VERSION\s*=\s*\((.*?)\)')
+
+
+def get_package_version():
+    "returns package version without importing it"
+    base = os.path.abspath(os.path.dirname(__file__))
+    with open(os.path.join(base, "celerydeploy/__init__.py")) as initf:
+        for line in initf:
+            m = version.match(line.strip())
+            if not m:
+                continue
+            return ".".join(m.groups()[0].split(", "))
+
+
 setup(
     name='celerydeploy',
-    version=celerydeploy.__version__,
+    version=get_package_version(),
     description='Celery deployment tool',
     long_description=open('README.rst').read(),
     author='Mher Movsisyan',
