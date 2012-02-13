@@ -5,7 +5,7 @@ import os
 
 from importlib import import_module
 
-from fabric.api import run, env, put, task, require
+from fabric.api import run, env, put, task, require, puts
 
 from .utils import virtualenv, mpath, import_celeryconfig
 
@@ -62,3 +62,33 @@ def deploy():
         put(mpath(conf), '.')
         for module in map(import_module, conf.CELERY_IMPORTS):
             put(mpath(module), '.')
+
+
+@task
+def start_celerybeat(host=None):
+    "start celerybeat scheduler"
+    host = host or env.hosts[0]
+    conf = import_celeryconfig()
+    if env.host and env.host != host:
+        puts('Skipping %s non-beat host' % env.host)
+        return
+
+    if getattr(conf, 'CELERYBEAT_SCHEDULE', None):
+        require('celery_path')
+        with virtualenv(env.celery_path):
+            run('supervisorctl -c supervisord.conf start celerybeat')
+
+
+@task
+def stop_celerybeat(host=None):
+    "stop celerybeat scheduler"
+    host = host or env.hosts[0]
+    conf = import_celeryconfig()
+    if env.host and env.host != host:
+        puts('Skipping %s non-beat host' % env.host)
+        return
+
+    if getattr(conf, 'CELERYBEAT_SCHEDULE', None):
+        require('celery_path')
+        with virtualenv(env.celery_path):
+            run('supervisorctl -c supervisord.conf stop celerybeat')
