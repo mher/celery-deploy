@@ -5,7 +5,7 @@ import os
 
 from importlib import import_module
 
-from fabric.api import run, env, put, task, require, puts
+from fabric.api import run, env, put, task, require, puts, sudo
 
 from .utils import virtualenv, mpath, import_celeryconfig
 
@@ -15,6 +15,7 @@ def setup():
     """setup virtual environments for workers
     create a virtual environment, install required packages"""
     require('celery_path')
+    sudo('pip install virtualenv')
     run('virtualenv %s' % env.celery_path)
     with virtualenv(env.celery_path):
         run('pip install celery')

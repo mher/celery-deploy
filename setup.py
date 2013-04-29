@@ -27,7 +27,7 @@ setup(
     author='Mher Movsisyan',
     url='https://github.com/mher/celery-deploy',
     packages=find_packages(),
-    install_requires=['fabric', 'virtualenv'],
+    install_requires=['fabric',],
     entry_points={
         'console_scripts': [
             'celerydeploy = celerydeploy.__main__:main',
