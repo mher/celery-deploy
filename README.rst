@@ -49,3 +49,9 @@ To install celerydeploy, simply: ::
 .. _`celery`: http://celeryproject.org/
 .. _`supervisord`: http://supervisord.org/
 .. _virtual environments: http://pypi.python.org/pypi/virtualenv
+
+
+.. image:: https://d2weczhvl823v0.cloudfront.net/mher/celery-deploy/trend.png
+   :alt: Bitdeli badge
+   :target: https://bitdeli.com/free
+
