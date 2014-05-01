@@ -1,5 +1,5 @@
-celerydeploy: Deployment tool for Celery
-========================================
+Deployment tool for Celery
+==========================
 
 `celerydeploy` is a fabric_ script for deploying and managing Celery_
 worker processes.
@@ -14,6 +14,8 @@ Before calling `celerydeploy` provide a deployment path and a list of
 target hosts. `celerydeploy` will try to find `CELERY_DEPLOY_PATH` 
 variable in Celery configuration file. Target hosts can be provided
 with `CELERY_DEPLOY_HOSTS` variable or using --hosts command line option.
+Third-party libraries can be installed by listing them in `PIP_PACKAGES`
+variable.
 
 Setup Celery on localhost and example.com: ::
 
