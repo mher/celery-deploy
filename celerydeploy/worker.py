@@ -18,8 +18,11 @@ def setup():
     sudo('pip install virtualenv')
     run('virtualenv %s' % env.celery_path)
     with virtualenv(env.celery_path):
+        conf = import_celeryconfig()
         run('pip install celery')
         run('pip install supervisor')
+        for package in conf.PIP_PACKAGES:
+            run('pip install -U %s' % package)
 
 
 @task
