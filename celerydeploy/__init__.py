@@ -9,7 +9,7 @@ from celerydeploy import worker
 from celerydeploy.utils import virtualenv, import_celeryconfig
 
 
-VERSION = (0, 0, 3)
+VERSION = (0, 2, 0)
 
 __version__ = '.'.join(map(str, VERSION))
 
